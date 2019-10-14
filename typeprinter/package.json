@@ -1,0 +1,90 @@
+{
+  "name": "typeprinter",
+  "version": "1.0.0",
+  "description": "Type Printer",
+  "main": "main.js",
+  "scripts": {
+    "build": "cd .. && cd canvas && npm run build && cd .. && cd controller && npm run build && cd .. && cd typeprinter && npm run build:win32 && npm run build:win64",
+    "start": "electron .",
+    "serve": "cd .. && cd canvas && npm run build && cd .. && cd controller && npm run build && cd .. && cd typeprinter && electron .",
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win --ia32",
+    "build:win64": "electron-builder --win --x64"
+  },
+  "build": {
+    "productName": "Type Printer",
+    "appId": "com.electron.typeprinter",
+    "asar": true,
+    "protocols": {
+      "name": "Type Printer",
+      "schemes": [
+        "typeprinter"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./resources/icons/windows/tp.ico"
+    },
+    "dmg": {
+      "title": "Simple Text Editor",
+      "icon": "./resources/icons/windows/tp.ico"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./resources/icons/windows/tp.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ],
+      "icon": "./resources/icons/windows/tp.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "../dist/",
+      "app": "."
+    }
+  },
+  "author": "Victor Chanil Park",
+  "license": "GPL3.0",
+  "dependencies": {
+    "iohook": "^0.6.1",
+    "keycode": "^2.2.0"
+  },
+  "devDependencies": {
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0"
+  },
+  "iohook": {
+    "targets": [
+      "node-72",
+      "electron-73"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  }
+}

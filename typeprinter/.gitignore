@@ -1,6 +1,3 @@
-# production build directory
-/dist
-
 # Logs
 logs
 *.log
