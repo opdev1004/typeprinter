@@ -69,7 +69,7 @@
     "keycode": "^2.2.0"
   },
   "devDependencies": {
-    "electron": "^7.2.4",
+    "electron": "^9.4.0",
     "electron-builder": "^21.2.0"
   },
   "iohook": {
